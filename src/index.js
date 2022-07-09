@@ -6,6 +6,8 @@ const hbs = require('express-handlebars');
 const path = require('path');
 
 
+app.use(express.static('./src/public'));
+
 app.use(morgan('combined'));
 
 app.engine('.hbs', hbs.engine({

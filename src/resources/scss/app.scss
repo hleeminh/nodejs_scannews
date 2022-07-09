@@ -1,0 +1,15 @@
+@import 'var';
+h1 {
+    color: $color-red;
+    font-size: 100px;
+    background-color: azure;
+    border: 1rem;
+    height: auto;
+}
+
+h2 {
+    color: blue;
+    font-size: 50px;
+    background-color: aqua;
+    border: 1rem;
+}
