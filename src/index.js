@@ -29,12 +29,14 @@ app.engine(
 );
 app.set('view engine', '.hbs');
 app.set('views', './src/resources/views');
+
 app.get('/', (req, res) => {
     res.render('home')
 });
-app.get('/upload-file', (req, res) => {
-    res.render('upload-file')
-});
+// app.get('/upload-file', (req, res) => {
+//     res.render('upload-file')
+// });
+
 // route init
 //=> đi tới index-route.js
 route(app);

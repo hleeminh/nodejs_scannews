@@ -5,7 +5,7 @@ const express = require('express');
 const router = express.Router();
 const importlinkController = require('../app/controllers/ImportlinkController');
 
-router.get('/show-link', importlinkController.show_link);
 router.get('/import-link', importlinkController.import_link);
+router.post('/import-link', importlinkController.import);
 
 module.exports = router;

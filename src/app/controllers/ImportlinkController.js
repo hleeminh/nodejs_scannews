@@ -1,13 +1,19 @@
-//  đi từ inportlink-route.js ==>
-class ImportlinkController {
-    //[GET] /home
-    import_link(req, res) {
-        res.render('import-link');
-    }
+  //  đi từ importlink-route.js ==>
+  const Article = require('../models/Article');
+  class ImportlinkController {
+      import_link(req, res) {
+          res.render('import-link');
+      }
 
-    show_link(req, res) {
-        res.render('show-link');
-    }
-}
+      import (req, res, str) {
 
-module.exports = new ImportlinkController();
+          //   const array = str.split(',');
+          const article = new Article(req.body);
+          article.save()
+              // res.send('saved');
+              .then(() => res.redirect('/show-link'))
+      }
+
+  }
+
+  module.exports = new ImportlinkController();
