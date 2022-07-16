@@ -1,7 +1,10 @@
 const http = require('http');
 const formidable = require('formidable');
 const fs = require('fs');
+
 const Detail = require('../models/Detail');
+// let Detail = fs.readFileSync('City.json');
+// let details = JSON.parse(Detail);
 class UploadfileController {
     upload_file(req, res) {
         res.render('upload-file');
@@ -15,7 +18,7 @@ class UploadfileController {
             var form = new formidable.IncomingForm();
             form.parse(req, function(err, fields, files) {
                 var oldpath = files.filetoupload.filepath;
-                var newpath = 'C:/Users/Your Name/' + files.filetoupload.originalFilename;
+                var newpath = 'C:/Users/Nhin cc/' + files.filetoupload.originalFilename;
                 fs.rename(oldpath, newpath, function(err) {
                     if (err) throw err;
                     res.write('File uploaded and moved!');

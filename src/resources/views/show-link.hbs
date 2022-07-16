@@ -1,12 +1,28 @@
-
 <div class="mt-4">
     <ul class="list-group">
-{{#each articles}}
-  <li class="list-group-item">{{this.url}}</li>
-    <ul>{{this.createAt}}</ul>
-    <ul>{{this.updateAt}}</ul>
-    <ul>{{this.status}}</ul>
-{{/each}}
+
+  <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Url</th>
+      <th scope="col">CreateAt</th>
+      <th scope="col">UpdateAt</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each articles}}
+    <tr>
+      <th scope="row">{{@index}}</th>
+      <td>{{this.url}}</td>
+      <td>{{this.createAt}}</td>
+      <td>{{this.updateAt}}</td>
+      <td>{{this.status}}</td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+
 </ul>
 </div>
 
