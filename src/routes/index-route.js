@@ -11,6 +11,7 @@ function route(app) {
     app.get('/import-link', importlinkRouter);
     app.post('/import-link', importlinkRouter);
     app.get('/upload-file', uploadfileRouter);
+    app.post('/upload-file', uploadfileRouter);
 
 
 }

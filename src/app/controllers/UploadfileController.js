@@ -1,17 +1,30 @@
+const http = require('http');
+const formidable = require('formidable');
+const fs = require('fs');
+const Detail = require('../models/Detail');
 class UploadfileController {
     upload_file(req, res) {
         res.render('upload-file');
     }
 
-    // import (req, res, str) {
+    upload(req, res) {
+        if (req.url == '/upload-file') {
+            const detail = new Detail(req.body);
+            detail.save()
+                .then(() => res.redirect('/'))
+            var form = new formidable.IncomingForm();
+            form.parse(req, function(err, fields, files) {
+                var oldpath = files.filetoupload.filepath;
+                var newpath = 'C:/Users/Your Name/' + files.filetoupload.originalFilename;
+                fs.rename(oldpath, newpath, function(err) {
+                    if (err) throw err;
+                    res.write('File uploaded and moved!');
+                    res.end();
+                });
+            });
+        }
 
-    //     //   const array = str.split(',');
-    //     const article = new Article(req.body);
-    //     article.save()
-    //         // res.send('saved');
-    //         .then(() => res.redirect('/show-link'))
-    // }
-
+    }
 }
 
 module.exports = new UploadfileController();
