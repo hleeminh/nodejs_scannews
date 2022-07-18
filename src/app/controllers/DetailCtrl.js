@@ -2,16 +2,16 @@ const http = require('http');
 const formidable = require('formidable');
 const fs = require('fs');
 
-const Detail = require('../../models/Detail');
+const Detail = require('../models/Detail');
 // let Detail = fs.readFileSync('City.json');
 // let details = JSON.parse(Detail);
-class UploadfileController {
+class DetailCtrl {
     upload_file(req, res) {
-        res.render('detail/upload-file');
+        res.render('detail/upload');
     }
 
     upload(req, res) {
-        if (req.url == '/detail/upload-file') {
+        if (req.url == '/detail/upload') {
             const detail = new Detail(req.body);
             detail.save()
                 .then(() => res.redirect('/'))
@@ -30,4 +30,4 @@ class UploadfileController {
     }
 }
 
-module.exports = new UploadfileController();
+module.exports = new DetailCtrl();

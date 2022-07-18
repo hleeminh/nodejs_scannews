@@ -1,5 +1,5 @@
 <div class="mt-5">
-    <form method="POST" action="/article/edit-link/{{article._id}}?_method=PUT">
+    <form method="POST" action="/article/update/{{article._id}}?_method=PUT">
       <div class="form-group" 
         <label for="url">Url</label>
         <input type="text" class="form-control" value="{{article.url}}" id="url" name="url">
@@ -9,6 +9,6 @@
         <input type="text" class="form-control" value="{{article.status}}" id="status" name="status">
       </div>
       <button type="submit" class="btn btn-primary">Lưu lại</button>
-      <a href="/article/show-link" type="submit" class="btn btn-success">Trở lại</a>
+      <a href="/article/show" type="submit" class="btn btn-success">Trở lại</a>
     </form>
 </div>

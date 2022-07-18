@@ -4,7 +4,7 @@ const port = 3000;
 const morgan = require('morgan');
 const hbs = require('express-handlebars');
 const path = require('path');
-const route = require('./routes/index-route');
+const route = require('./routes/app-route');
 const db = require('./config/db');
 const methodOverride = require('method-override')
 
