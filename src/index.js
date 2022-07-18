@@ -6,6 +6,7 @@ const hbs = require('express-handlebars');
 const path = require('path');
 const route = require('./routes/index-route');
 const db = require('./config/db');
+const methodOverride = require('method-override')
 
 
 //Connect to DB
@@ -18,6 +19,7 @@ app.use(
     }),
 );
 app.use(express.json());
+app.use(methodOverride('_method'));
 
 // app.use(morgan('combined'));
 
@@ -33,12 +35,11 @@ app.engine(
 app.set('view engine', '.hbs');
 app.set('views', './src/resources/views');
 
+
 app.get('/', (req, res) => {
     res.render('home')
 });
-// app.get('/upload-file', (req, res) => {
-//     res.render('upload-file')
-// });
+
 
 // route init
 //=> đi tới index-route.js
