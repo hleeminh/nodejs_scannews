@@ -1,15 +1,25 @@
+
 <div class="mt-4">
   <table class="table">
   <thead>
+
     <tr>
       <th scope="col">#</th>
       <th scope="col">Url</th>
       <th scope="col">CreateAt</th>
       <th scope="col">UpdateAt</th>
       <th scope="col">Status</th>
+      <th scope="col">
+        <a href="/article/import" type="button" class="btn btn-success">Thêm</a>
+        </th>
+      <th scope="col">
+        <a href="#" type="button" class="btn btn-warning">Lọc</a>
+        </th>
+
     </tr>
   </thead>
   <tbody>
+
     {{#each articles}}
     <tr>
       <th scope="row">{{sum @index 1}}</th>
@@ -17,15 +27,11 @@
       <td id="date">{{this.createAt}}</td>
       <td>{{this.updateAt}}</td>
       <td>{{this.status}}</td>
-      <td>
-        <a href="/article/import" type="button" class="btn btn-success">Thêm</a>
-        </td>
+
       <td>
         <a href="/article/update/{{this._id}}" class="btn btn-primary">Sửa</a>       
         </td>
-      <td>
-        <a href="#" type="button" class="btn btn-warning">Lọc</a>
-        </td>
+
       <td>
         <a href="" type="button" class="btn btn-danger" data-toggle="modal" 
           data-target="#delete-article-modal" data-id="{{this._id}}" >Xóa</a>
