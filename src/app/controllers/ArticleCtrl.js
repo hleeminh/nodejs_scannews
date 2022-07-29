@@ -8,7 +8,7 @@ class ArticleCtrl {
 
     import (req, res) {
         //   const array = str.split(',');
-        const article = new Article(req.body);
+        const article = new Article(req.body.name.split('\n'));
         article.save()
             // res.send('saved');
             .then(() => res.redirect('show'))
@@ -17,6 +17,13 @@ class ArticleCtrl {
         Article.find({})
             .then(articles => {
                 res.render('article/show', { articles: multipleMongooseToObject(articles) });
+            })
+            .catch(next);
+    }
+    filter(req, res, next) {
+        Article.find({ status: 'not scanned yet' })
+            .then(articles => {
+                res.render('article/show-nysa', { articles: multipleMongooseToObject(articles) });
             })
             .catch(next);
     }
@@ -37,6 +44,7 @@ class ArticleCtrl {
             .then(() => res.redirect('back'))
             .catch(next);
     }
+
 }
 
 module.exports = new ArticleCtrl();

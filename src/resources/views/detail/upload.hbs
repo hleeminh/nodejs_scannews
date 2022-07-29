@@ -1,11 +1,28 @@
 <div class="mt-4" >
-<form class="input-group mb-3" method="POST" action="/detail/upload">
+{{!-- <form class="input-group mb-3" method="POST" action="/detail/upload" enctype="multipart/form-data">
   <div class="custom-file">
-    <input type="file" class="custom-file-input" id="inputGroupFile02">
+    <input type="file" class="custom-file-input" id="inputGroupFile02" multiple required>
     <label class="custom-file-label" for="inputGroupFile02">Choose file</label>
   </div>
   <div class="input-group-append">
-     <button class="btn btn-outline-secondary" type="submit">Upload</button>
+     <button class="btn btn-outline-secondary">Upload</button>
   </div>
-</form>
+</form> --}}
+<div class="container">
+        <div class="row" >
+            <div class="col-md-12">
+                <div class="card" style="margin-top: 0%; padding: 1%;">
+                    <h3 style="text-align: center;">Upload file báo</h3><hr>
+                    <form action="/detail/upload" method="POST" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <input type="file" id="file-upload" name="files" class="form-control-file border" multiple required>
+                        </div>
+                        
+                        <button class="btn btn-outline-secondary">Upload File</button>
+                    </form>
+                </div>
+                 
+            </div>
+        </div>
+    </div>
 </div>

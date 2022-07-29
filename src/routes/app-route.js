@@ -10,10 +10,11 @@ function route(app) {
     app.delete('/article/update/:id', articleRouter);
     app.get('/article/update/:id', articleRouter);
     app.get('/article/show', articleRouter);
+    app.get('/article/show-nysa', articleRouter);
     app.get('/article/import', articleRouter);
     app.post('/article/import', articleRouter);
     app.get('/detail/upload', detailRouter);
-    app.post('/detail/upload', detailRouter);
+    // app.post('/detail/upload', detailRouter);
 
 
 

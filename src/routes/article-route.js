@@ -9,6 +9,8 @@ router.put('/article/update/:id', articleCtrl.update);
 router.get('/article/update/:id', articleCtrl.edit);
 router.delete('/article/update/:id', articleCtrl.delete);
 router.get('/article/show', articleCtrl.show);
+router.get('/article/show-nysa', articleCtrl.filter);
+
 
 
 module.exports = router;
