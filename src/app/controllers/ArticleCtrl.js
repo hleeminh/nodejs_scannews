@@ -1,5 +1,6 @@
 //  đi từ inportlink-route.js ==>
 const Article = require('../models/Article');
+const moment = require('moment')
 const { multipleMongooseToObject, mongooseToObject } = require('../../util/mongoose');
 class ArticleCtrl {
     import_link(req, res) {
@@ -7,16 +8,32 @@ class ArticleCtrl {
     }
 
     import (req, res) {
-        //   const array = str.split(',');
-        const article = new Article(req.body.name.split('\n'));
-        article.save()
-            // res.send('saved');
-            .then(() => res.redirect('show'))
+        const arrArticle = req.body.url.split('\r\n')
+        for (let el of arrArticle) {
+            Article.create({ url: el })
+        }
+        res.redirect('show');
+        // const article = new Article(req.body);
+        // article.save()
+        //     .then(() => res.redirect('show'))
     }
+    // show(req, res, next) {
+    //     Article.find({})
+    //         .then(articles => {
+    //             res.render('article/show', { articles: multipleMongooseToObject(articles) });
+    //         })
+    //         .catch(next);
+    // }
     show(req, res, next) {
         Article.find({})
             .then(articles => {
-                res.render('article/show', { articles: multipleMongooseToObject(articles) });
+                const data = []
+                for (let element of multipleMongooseToObject(articles)) {
+                    element.createAt = moment(element.createAt).format('HH:mm:ss DD/MM/YYYY')
+                    element.updateAt = moment(element.updateAt).format('HH:mm:ss DD/MM/YYYY')
+                    data.push(element)
+                }
+                res.render('article/show', { articles: data });
             })
             .catch(next);
     }

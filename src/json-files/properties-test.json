@@ -1,0 +1,58 @@
+[{
+		"id": "www.hanoimoi.com.vn",
+		"name": "Hà Nội mới",
+		"baseUrl": "http://www.hanoimoi.com.vn/",
+		"type": 1,
+		"ruleList": "",
+		"urlSeeds": [
+			"http://www.hanoimoi.com.vn/"
+		],
+		"deep": 1,
+		"patternDeep": [
+			"http://www.hanoimoi.com.vn/[^.]*"
+		],
+		"patternCrawler": [
+			"http://www.hanoimoi.com.vn(/[\\w-]*){4}"
+		],
+		"docType": "news_article",
+		"rank": 1174,
+		"category": "Tin tức và Truyền thông",
+		"fields": [
+			{
+				"key": "title",
+				"type": 0,
+				"rule": "#NewsDetails > h1"
+			},
+			{
+				"key": "summary",
+				"type": 0,
+				"rule": "#NewsDetails > div.content > div.gallery-included > div.article > div > strong"
+			},
+			{
+				"key": "content",
+				"type": 0,
+				"rule": "#NewsDetails > div.content > div.gallery-included > div.article > p",
+				"subElement": 1
+			},
+			{
+				"key": "urlImage",
+				"type": 4,
+				"rule": "meta[property=og:image]"
+			},
+			{
+				"key": "createDate",
+				"type": 2,
+				"rule": "#NewsDetails > div.descript > div.definfo > div.period",
+				"pattern": [
+					"dd/MM/yyyy HH:mm\\t(\\d){2}/(\\d){2}/(\\d){4}\\t(\\d){2}:(\\d){2}"
+				]
+			},
+			{
+				"key": "keyword",
+				"type": 5,
+				"rule": "#NewsDetails > div.taglist > a"
+			}
+		],
+		"province": "Hà Nội"
+	}
+]

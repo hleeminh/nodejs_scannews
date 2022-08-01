@@ -1,8 +1,6 @@
 <div class="mt-4">
-
   <table class="table">
   <thead>
-
     <tr>
       <th scope="col">#</th>
       <th scope="col">Url</th>
@@ -23,7 +21,7 @@
     <tr>
       <th scope="row">{{sum @index 1}}</th>
       <td>{{this.url}}</td>
-      <td id="date">{{this.createAt}}</td>
+      <td>{{this.createAt}}</td>
       <td>{{this.updateAt}}</td>
       <td>{{this.status}}</td>
 
@@ -40,18 +38,7 @@
     {{/each}}
   </tbody>
 </table>
-<script >
-    const moment = require('moment');
-    $(document).ready(function() {
 
-     // set an element
-     $('#date').val( moment().format('dddd HH:mm:ss DD/MM/YYYY') );
-
-     // set a variable
-     var today = moment().format('dddd HH:mm:ss DD/MM/YYYY');
-
-});
-</script>
 </div>
 
 <div id="delete-article-modal" class="modal" tabindex="-1" role="dialog">
