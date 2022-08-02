@@ -1,7 +1,7 @@
 [{
-		"id": "www.hanoimoi.com.vn",
-		"name": "Tin về chính trị",
-		"baseUrl": "http://www.hanoimoi.com.vn/",
+		"id": "vnexpress.net",
+		"name": "Tin về xã hội",
+		"baseUrl": "https://vnexpress.net/",
 		"type": 1,
 		"ruleList": "",
 		"urlSeeds": [

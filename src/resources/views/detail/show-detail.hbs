@@ -1,0 +1,70 @@
+<div class="mt-4">
+  <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">ID</th>
+      <th scope="col">Name</th>
+      <th scope="col">BaseUrl</th>
+      <td>
+        <a href="/detail/upload" type="button"class="btn btn-success">Thêm</a>       
+        </td>
+    </tr>
+  </thead>
+  <tbody>
+
+    {{#each details}}
+    <tr>
+      <th scope="row">{{sum @index 1}}</th>
+      <td>{{this.id}}</td>
+      <td>{{this.name}}</td>
+      <td>{{this.baseUrl}}</td>
+      <td>
+        <a href="" type="button" class="btn btn-danger" data-toggle="modal" 
+          data-target="#delete-detail-modal" data-id="{{this._id}}" >Xóa</a>
+        </td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+</div>
+
+<div id="delete-detail-modal" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Xóa link báo</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Bạn có chắc chắn muốn xóa id báo này không ?</p>
+      </div>
+      <div class="modal-footer">
+        <button id="btn-delete-detail" type="button" class="btn btn-danger">Xóa bỏ</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+      </div>
+    </div>
+  </div>
+</div>
+{{!-- Delete hidden form --}}
+    <form method="POST" name="delete-detail-form"></form>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function(){
+        var detailId;
+        var btnDeleteDetail = document.getElementById('btn-delete-detail');
+        var deleteForm = document.forms['delete-detail-form'];
+        $('#delete-detail-modal').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget);
+        detailId = button.data('id');
+      });
+
+        btnDeleteDetail.onclick = function(){
+          deleteForm.action = '/detail/' + detailId + '?_method=DELETE';
+          deleteForm.submit();
+        }
+    });
+    
+</script>

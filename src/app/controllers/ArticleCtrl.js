@@ -40,13 +40,19 @@ class ArticleCtrl {
     filter(req, res, next) {
         Article.find({ status: 'not scanned yet' })
             .then(articles => {
-                res.render('article/show-nysa', { articles: multipleMongooseToObject(articles) });
+                const data = []
+                for (let element of multipleMongooseToObject(articles)) {
+                    element.createAt = moment(element.createAt).format('HH:mm:ss DD/MM/YYYY')
+                    element.updateAt = moment(element.updateAt).format('HH:mm:ss DD/MM/YYYY')
+                    data.push(element)
+                }
+                res.render('article/show-nysa', { articles: data });
             })
             .catch(next);
     }
-    edit(req, res, next) {
+    edit_article_form(req, res, next) {
         Article.findById(req.params.id)
-            .then(article => res.render('article/update', {
+            .then(article => res.render('article/edit', {
                 article: mongooseToObject(article)
             }))
             .catch(next);

@@ -14,6 +14,8 @@ var upload = multer({ storage: storage });
 
 
 router.get('/detail/upload', detailCtrl.upload_file);
+router.get('/detail/show-detail', detailCtrl.show_detail);
+router.delete('/detail/:id', detailCtrl.delete);
 router.post('/detail/upload', upload.single('myFile'), detailCtrl.upload);
 
 module.exports = router;

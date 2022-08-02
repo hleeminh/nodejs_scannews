@@ -29,7 +29,7 @@
       <td>{{this.status}}</td>
 
       <td>
-        <a href="/article/update/{{this._id}}" class="btn btn-primary">Sửa</a>       
+        <a href="/article/edit/{{this._id}}" class="btn btn-primary">Sửa</a>       
         </td>
 
       <td>
@@ -77,7 +77,7 @@
       });
 
         btnDeleteArticle.onclick = function(){
-          deleteForm.action = '/article/update/' + articleId + '?_method=DELETE';
+          deleteForm.action = '/article/' + articleId + '?_method=DELETE';
           deleteForm.submit();
         }
     });

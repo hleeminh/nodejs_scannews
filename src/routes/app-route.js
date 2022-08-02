@@ -6,9 +6,9 @@ const detailRouter = require('./detail-route');
 
 
 function route(app) {
-    app.put('/article/update/:id', articleRouter);
-    app.delete('/article/update/:id', articleRouter);
-    app.get('/article/update/:id', articleRouter);
+    app.put('/article/:id', articleRouter);
+    app.delete('/article/:id', articleRouter);
+    app.get('/article/edit/:id', articleRouter);
 
     app.get('/article/show', articleRouter);
     app.get('/article/show-nysa', articleRouter);
@@ -18,6 +18,9 @@ function route(app) {
 
     app.get('/detail/upload', detailRouter);
     app.post('/detail/upload', detailRouter);
+    app.delete('/detail/:id', detailRouter);
+    app.get('/detail/show-detail', detailRouter);
+
 
 
 

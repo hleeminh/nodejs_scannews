@@ -2,8 +2,10 @@ const http = require('http');
 const formidable = require('formidable');
 const fs = require('fs');
 const path = require('path');
-const db = require('./config/db');
+const db = require('../../config/db');
 const Detail = require('../models/Detail');
+const mongoose = require('mongoose');
+const { multipleMongooseToObject, mongooseToObject } = require('../../util/mongoose');
 
 class DetailCtrl {
 
@@ -13,15 +15,24 @@ class DetailCtrl {
 
     upload(req, res, next) {
         var json = fs.readFileSync(req.file.path);
-        const file = req.file;
-        // res.send(file);
-        db.collection('details').insertOne(json);
-        // const arrDetail = req.body;
-        // for (let el of arrDetail) {
-        //     Detail.insertOne(el, json);
-        // }
-        res.redirect('back');
+        Detail.create(JSON.parse(json.toString())[0])
+            // Detail.findOneAndUpdate({ id: req.params.id }, { upsert: true })
+        res.redirect('show-detail')
     }
+    show_detail(req, res, next) {
+        Detail.find({})
+            .then(details => {
+                res.render('detail/show-detail', { details: multipleMongooseToObject(details) });
+            })
+            .catch(next);
+    }
+    delete(req, res, next) {
+        Detail.deleteOne({ _id: req.params.id })
+            .then(() => res.redirect('back'))
+            .catch(next);
+    }
+
 }
+
 
 module.exports = new DetailCtrl();
