@@ -8,10 +8,15 @@ class ArticleCtrl {
     }
 
     import (req, res) {
-        const arrArticle = req.body.url.split('\r\n')
-        for (let el of arrArticle) {
-            Article.create({ url: el })
+        const arrArticle = req.body.url.split('\r\n');
+        const arrArticle1 = req.body.status.split('\r\n');
+        for (let element of arrArticle) {
+            Article.create({ url: element })
         }
+        for (let element of arrArticle1) {
+            Article.create({ status: element })
+        }
+
         res.redirect('show');
         // const article = new Article(req.body);
         // article.save()
