@@ -9,9 +9,13 @@ class ArticleCtrl {
 
     import (req, res) {
         const arrArticle = req.body.url.split('\n');
+        const arrArticle1 = req.body.status.split('\n');
 
         for (let element of arrArticle) {
             Article.create({ url: element })
+        }
+        for (let element of arrArticle1) {
+            Article.create({ status: element })
         }
 
         res.redirect('show');
