@@ -16,7 +16,6 @@ class ArticleCtrl {
             Article.create({ url: element, status: element });
         }
 
-
         res.redirect('show');
 
         // const article = new Article(req.body);
